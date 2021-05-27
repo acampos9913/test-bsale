@@ -3,6 +3,7 @@ var categories = document.getElementById('categories')
 var searchButton = document.getElementById('search')
 var searchText = document.getElementById('search-text')
 var moreButton = document.getElementById('page-item')
+var stockDisponible = document.getElementById('stockDisponible')
 
 var template_product = document.getElementById('template-product').content
 var template_category = document.getElementById('template-category').content
@@ -59,16 +60,29 @@ const fechCategory = async () =>{
 
 const pintarProduct = data => {
     try {
+        let cantidadDatos = data.length;
         if(page === 1){
             products.innerHTML = ""
+            if(cantidadDatos > 0){
+                stockDisponible.style.visibility = "hidden"
+            }
+            else{
+                stockDisponible.style.visibility = "visible"
+                stockDisponible.textContent = "No exiten productos disponibles"
+            }
         }
 
-        if(data.length > 0){
+        if(cantidadDatos > 0){
             moreButton.disabled = false;
 
             data.forEach(product => {
                 template_product.getElementById('card-title').textContent = product.name
-                template_product.getElementById('card-image').src = product.url_image
+                if(product.url_image === null || product.url_image === ''){
+                    template_product.getElementById('card-image').src = './image/default.png'
+                }
+                else{
+                    template_product.getElementById('card-image').src = product.url_image
+                }
                 template_product.getElementById('card-price').textContent = '$ ' + product.price
         
                 const clone = template_product.cloneNode(true)
@@ -116,7 +130,6 @@ const mostrarProductosPorCategoria = e =>{
 const mostrarProductosPorBusqueda = e =>{
     text = searchText.value
     page = 1
-    console.log(text)
     fechProduct()
 }
 
