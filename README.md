@@ -10,12 +10,17 @@ Front: El aplicativo se realizó con Bootstrap y Vainilla js.
 Backend: Nodejs con MySql
 
 Apis:
-- api/category/get
-- api/product/category/
+- GET: api/category/get
+  Respuesta: application/json
+  Ejemplo de llamada: api/category/get
+- GET: api/product/category/
   - parametros :
     - category : Define el codigo de categoria
     - text: Define el campo texto a filtrar
     - page: define la pagina a mostrar del boton cargar mas
+    
+    Respuesta: application/json
+    Ejemplo de llamada: api/product/category/?category=1&page=1&text="LICOR"
 
 Deploy
 - Frontend: Aws Bucked S3
