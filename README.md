@@ -6,6 +6,7 @@ Front: El aplicativo se realizó con Bootstrap y Vainilla js.
   -  style.css: Contiene el estilo de la web
   -  index.html: Contiene el codigo html de la web con la maquetacion respectiva
   -  app.js: Contiene el codigo javascript de la web con las invocaciones a las apis para mostrar categorias y productos
+  -  image: Es la carpeta que contiene la imagen por defecto de un producto sin imagen
 
 Backend: Nodejs con MySql
 
